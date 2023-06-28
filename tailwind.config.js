@@ -784,7 +784,7 @@ module.exports = {
       md: '768px',
       lg: '1024px',
       xl: '1280px',
-      '2xl': '1536px',
+      phone: '375px',
     },
     scrollMargin: ({ theme }) => ({
       ...theme('spacing'),
@@ -842,6 +842,8 @@ module.exports = {
       80: '20rem',
       96: '24rem',
       100: '40rem',
+      101: '50rem',
+      102: '60rem',
       '100xl':'90rem',
     },
     stroke: ({ theme }) => ({

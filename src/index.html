@@ -4,23 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../dist/output.css">
 </head>
 
 <body >
-    <!--  nav bar -->
+    <!--  HEADER -->
 
-    <nav class="flex justify-around mt-10">
+
+    <header class="flex justify-center ">
+         <nav class="flex justify-between mt-10 container items-center ">
         <div>
-            <img src="../images/Group 162475.svg" alt="logo" class="w-32">
+            <img src="../images/Group 162475.svg" alt="logo" class="w-36 mr-28  ">
         </div>
-        <ul class="flex justify-between w-96 items-center">
-            <li class="home text-gray-100  hover:text-blue_violet text -xl">Home</li>
-            <li class="Services text-gray-100 hover:text-blue_violet text -xl">Services</li>
-            <li class="Our projet text-gray-100 hover:text-blue_violet text -xl">Our projet</li>
-            <li class="About us text-gray-100 hover:text-blue_violet text -xl">About us</li>
+        <ul class="hidden sm:flex w-101 items-center justify-between   ">
+            <li class="w-54">
+                <ul class="hidden sm:flex gap-10 items-center   justify-center    ">
+                    <li class="home text-gray-100  hover:text-blue_violet text ">Home</li>
+                    <li class="Services text-gray-100 hover:text-blue_violet text ">Services</li>
+                    <li class="Our projet text-gray-100 hover:text-blue_violet text ">Our projet</li>
+                    <li class="About us text-gray-100 hover:text-blue_violet text ">About us</li>
+                    
+                    </li>
+                </ul>
+            </li>
+            <li><button class="w-40 h-10 border-2 border-white  rounded-5xl text-white ">Contact us</button>
         </ul>
-        <button class="w-40 border-2 border-white  rounded-5xl text-white ">Contact us</button>
+        <div class="flex sm:hidden w-8 justify-end mr-6"><i class="fa fa-bars text-white"></i></div>
     </nav>
+    </header>
+    
+    
+   
+   
 </body>
 </html>
