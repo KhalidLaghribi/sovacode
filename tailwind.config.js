@@ -341,7 +341,7 @@ module.exports = {
       '2xl': ['1.5rem', { lineHeight: '2rem' }],
       '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
       '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
-      '5xl': ['3rem', { lineHeight: '1' }],
+      '5xl': ['3rem', { lineHeight: '1.5' }],
       '6xl': ['3.75rem', { lineHeight: '1' }],
       '7xl': ['4.5rem', { lineHeight: '1' }],
       '7.5xl':['5rem', { lineHeight: '1' }],
@@ -681,6 +681,7 @@ module.exports = {
       0: '0',
       5: '0.05',
       10: '0.1',
+      12 : '0.12',
       15: '0.15',
       20: '0.2',
       25: '0.25',
@@ -762,6 +763,7 @@ module.exports = {
       6: '6deg',
       12: '12deg',
       45: '45deg',
+      66: '66deg',
       90: '90deg',
       180: '180deg',
     },
@@ -848,11 +850,16 @@ module.exports = {
       80: '20rem',
       96: '24rem',
       98: '30rem',
+      98.5:'34rem',
       99: '36.75rem',
       100: '40rem',
+      101.5:'43rem',
       101: '50rem',
       102: '60rem',
+      103: '87.5rem',
       '100xl':'90rem',
+      170: '170px',
+      
     },
     stroke: ({ theme }) => ({
       none: 'none',
@@ -1006,6 +1013,8 @@ module.exports = {
         'blue_violet':'#5454D4',
          'blue_violet1':'#5454d4d9',
          'blue_violet_light':'#6161d8',
+         'orange1':'#FBA81C',
+         'orange2': '#E05688',
       },
       fontFamily:{
         'nunito':['Nunito'],
@@ -1017,6 +1026,9 @@ module.exports = {
         '1':'1px',
       }
     },
+  },
+  backgroundImage:{
+    'handsome':"url('./images/handosme.svg')",
   },
   plugins: [],
 }
