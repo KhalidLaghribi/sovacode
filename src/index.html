@@ -12,7 +12,7 @@
     <!--  HEADER -->
 
 
-    <header class="flex justify-center  ">
+    <header class="flex justify-center" name="navigateur bar du site web Enver">
          <nav class="flex justify-between mt-10 container items-center">
         <div>
             <img src="../images/Group 162475.svg" alt="logo" class="w-36 mr-28 ml-5  ">
@@ -33,20 +33,20 @@
         <div class="flex sm:hidden w-8 justify-end mr-6"><i class="fa fa-bars text-white"></i></div>
     </nav>
     </header>
-    <div class=" block md:flex">
-        <section class="block container">
+    <div name="section 1 description du site web Enver" class=" block md:flex md:ml-4 container">
+        <section name="section 1 partie 1 description " class="block container">
             <div class="w-64 h-100 sm:w-98  bg-gradient-to-r -rotate-45 opacity-10 flex-shrink-0 blur-5xl from-blue_violet to-blue_violet_light z-0 relative"></div>
             <div class=" w-80 text-5xl ml-5 top-40 sm:w-99 sm:text-7.5xl sm:ml-28  sm :-top-44  text-white absolute  font-bold text-left">Build Your Awesome Platform</div>
             <div class="w-80 ml-5 text-base -mt-80 sm:w-99 sm:ml-28 sm:text-1xl text-gray-400  sm:-mt-72  text-justify sm:leading-loose">Enver studio is a digital studio that offers several services such as UI/UX Design to developers, we will provide the best service for those of you who use our services.</div>
             <button class="bg-blue_violet w-40 h-11 ml-5 mt-12 sm:w-48 sm:h-12 sm:mt-12 sm:ml-28  text-white">Our services <i class="fa-sharp fa-solid fa-arrow-up-right-from-square pl-4"></i></button>
         </section>
-        <section>
-            <div class="relative z-0">
+        <section name="section 1 partie 2 image" class=" relative md:right-20">
+            <div name="first section" class="relative z-0 ">
               <div class="absolute -top-170 left-0 max-w-screen w-full h-full bg-gradient-to-r from-orange-100 to-orange-200 sm:w-98 sm:h-103 sm:rotate-66 rotate-45 opacity-12 blur-6xl "></div>
               <div class="sm:w-98 w-98 h-98 sm:h-100 absolute z-10 sm:-right-52 right-50 -top-7 ">
                 <img src="../images/handosme.svg" alt="Handsome Image" class="sm:w-full w-3/4 h-full">
               </div>
-              <div class="  sm:h-98 h-81 sm:w-101.5 w-81 max-sm:right-5 absolute top-14 sm:top-24 sm:-left-96 right-9 z-30 grid grid-cols-2 grid-rows-2" name="add">
+              <div class="  sm:h-98 h-81 sm:w-101.5 w-81 max-sm:right-5 absolute top-14 sm:top-24 sm:-left-96 right-9  z-30 grid grid-cols-2 grid-rows-2" name="add">
                 <img class="sm:justify-self-center sm:mr-20 mt-10 sm:w-20 w-12" src="../images/Vector 13 (2).svg" alt="">
                 <img class="sm:w-full w-10 h-10  sm:h-14 max-sm:mr-5 sm:justify-self-start justify-self-end" src="../images/Group 162526.svg" alt="">
                 <img  class="self-end sm:w-28 sm:h-28 w-16 h-16" src="../images/Group 162527.svg" alt="">
@@ -55,7 +55,31 @@
             </div>
           </section>
     </div>
+
+   <br>
+
+
+
+    <section id="section2" name="section 2 partie video descriptive" class=" block sm:grid  sm:grid-cols-2  sm:grid-rows-2  md:h-80 w-103 ml-4 sm:mx-32 sm:mt-60 mt-98 ">
+        <div name="why enver" class="">
+            <h1 class="text-white sm:text-7xl text-4xl font-bold max-sm:w-80 h-28 max-sm:leading-normal    ">Why Enver Is The Best Choice?</h1>
+        </div>
+
+        <div>
+            <h2 class="text-gray-400 sm:w-99 w-81 text-base sm:text-1xl tracking-wider font-normal leading-loose">Watch this one minute video so you understand why you should use our services!</h2>
+        </div>
+
+        <div id="section2vid" class="col-span-2  sm:w-102.5 w-81 h-48 sm:h-101 relative  ">
+            <img src="../images/image 4.svg" alt="image du video descriptive sur Enver" class="w-full h-full mt-4 mr-7 z-0">
+            <img src="../images/Play.svg" alt="play button" class=" absolute sm:right-99 right-36 bottom-16 sm:bottom-81 sm:cursor-pointer z-10 max-sm:w-12 " id="play"> 
+        </div>
+        <div id="video_container" class="relative hidden">
+            <video id="video" src="../video/video1.mp4" class=" sm:w-100xl sm:h-99 sm:mx-52 w-81 h-48 " controls></video> 
+            <i id="close-btn"class="fa-sharp fa-solid fa-circle-xmark  text-white absolute  sm:left-101.5  sm:bottom-6 left-80 bottom-41 cursor-pointer "   onclick="closevideo()" ></i>
+        </div>
+    </section>
    
    
+<script src="projet.js"></script>
 </body>
 </html>
