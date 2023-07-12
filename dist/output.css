@@ -2417,12 +2417,12 @@ input:checked + .toggle-bg{
     display: grid;
   }
 
-  .lg\:h-99{
-    height: 36.75rem;
-  }
-
   .lg\:h-98{
     height: 30rem;
+  }
+
+  .lg\:h-99{
+    height: 36.75rem;
   }
 
   .lg\:w-102{
