@@ -1112,10 +1112,6 @@ input:checked + .toggle-bg{
   top: 5rem;
 }
 
-.top-28{
-  top: 7rem;
-}
-
 .top-40{
   top: 10rem;
 }
@@ -2423,6 +2419,10 @@ input:checked + .toggle-bg{
 
   .lg\:h-99{
     height: 36.75rem;
+  }
+
+  .lg\:h-98{
+    height: 30rem;
   }
 
   .lg\:w-102{
