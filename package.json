@@ -6,14 +6,16 @@
   "scripts": {
     "tawcha": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
   },
+  
   "keywords": [],
-  "author": "",
+  "author": "", 
   "license": "ISC",
   "devDependencies": {
     "tailwindcss": "^3.3.2"
   },
   "dependencies": {
     "flowbite": "^1.7.0",
+    "preline": "^1.9.0",
     "tailwindcss-gradients": "^3.0.0"
   }
 }
