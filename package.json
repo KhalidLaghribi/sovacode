@@ -6,8 +6,9 @@
   "scripts": {
     "tawcha": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
   },
+  
   "keywords": [],
-  "author": "",
+  "author": "", 
   "license": "ISC",
   "devDependencies": {
     "tailwindcss": "^3.3.2"
