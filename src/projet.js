@@ -30,7 +30,6 @@
     
     
     
-    
     let x=document.querySelector('#play').addEventListener('click',function(){
         let y=document.getElementById('section2vid').classList.add("hidden");
         let video_cont=document.getElementById('video_container');

@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js}"],
+  content: ["./src/**/*.{html,js}","./node_modules/flowbite/**/*.js"],
   theme: {
     accentColor: ({ theme }) => ({
       ...theme('colors'),
@@ -1040,6 +1040,9 @@ module.exports = {
   backgroundImage:{
     'handsome':"url('./images/handosme.svg')",
   },
-  plugins: [],
+  
+  plugins: [
+    require('flowbite/plugin')
+  ],
 }
 
