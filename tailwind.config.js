@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js}"],
+  content: ["./src/**/*.{html,js}","./node_modules/flowbite/**/*.js"],
   theme: {
     accentColor: ({ theme }) => ({
       ...theme('colors'),
@@ -268,6 +268,7 @@ module.exports = {
       ...theme('spacing'),
       '1/2': '50%',
       '1/3': '33.333333%',
+      '23/50':'46%',
       '2/3': '66.666667%',
       '1/4': '25%',
       '2/4': '50%',
@@ -292,6 +293,7 @@ module.exports = {
       '9/12': '75%',
       '10/12': '83.333333%',
       '11/12': '91.666667%',
+      'full_99':'99%',
       full: '100%',
     }),
     flexGrow: {
@@ -509,6 +511,8 @@ module.exports = {
       '1/3': '33.333333%',
       '2/3': '66.666667%',
       '1/4': '25%',
+      '23/50':'46%',
+
       '2/4': '50%',
       '3/4': '75%',
       '1/5': '20%',
@@ -520,6 +524,8 @@ module.exports = {
       '3/6': '50%',
       '4/6': '66.666667%',
       '5/6': '83.333333%',
+      'full_99':'99%',
+
       full: '100%',
       screen: '100vh',
       page : '163rem',
@@ -542,6 +548,8 @@ module.exports = {
       '1/3': '33.333333%',
       '2/3': '66.666667%',
       '1/4': '25%',
+      '23/50':'46%',
+
       '2/4': '50%',
       '3/4': '75%',
       full: '100%',
@@ -625,6 +633,8 @@ module.exports = {
     maxHeight: ({ theme }) => ({
       ...theme('spacing'),
       none: 'none',
+      'full_99':'99%',
+
       full: '100%',
       screen: '100vh',
       min: 'min-content',
@@ -645,6 +655,7 @@ module.exports = {
       '5xl': '64rem',
       '6xl': '72rem',
       '7xl': '80rem',
+      'full_99':'99%',
       full: '100%',
       min: 'min-content',
       max: 'max-content',
@@ -655,6 +666,7 @@ module.exports = {
     minHeight: {
       0: '0px',
       full: '100%',
+      'full_99':'99%',
       screen: '100vh',
       min: 'min-content',
       max: 'max-content',
@@ -663,6 +675,7 @@ module.exports = {
     minWidth: {
       0: '0px',
       full: '100%',
+      'full_99':'99%',
       min: 'min-content',
       max: 'max-content',
       fit: 'fit-content',
@@ -964,6 +977,7 @@ module.exports = {
       '1/4': '25%',
       '2/4': '50%',
       '3/4': '75%',
+      'full_99':'99%',
       full: '100%',
     }),
     width: ({ theme }) => ({
@@ -995,6 +1009,8 @@ module.exports = {
       '9/12': '75%',
       '10/12': '83.333333%',
       '11/12': '91.666667%',
+      'full_95':'95%',
+      'full_99':'99%',
       full: '100%',
       screen: '100vw',
       min: 'min-content',
@@ -1025,6 +1041,7 @@ module.exports = {
          'blue_violet_light':'#6161d8',
          'orange1':'#FBA81C',
          'orange2': '#E05688',
+         'gris':'rgba(30, 30, 32, 0.50)',
       },
       fontFamily:{
         'nunito':['Nunito'],
@@ -1040,6 +1057,9 @@ module.exports = {
   backgroundImage:{
     'handsome':"url('./images/handosme.svg')",
   },
-  plugins: [],
+  
+  plugins: [
+    require('flowbite/plugin')
+  ],
 }
 
