@@ -1116,6 +1116,10 @@ input:checked + .toggle-bg{
   top: 2rem;
 }
 
+.top-40{
+  top: 10rem;
+}
+
 .z-0{
   z-index: 0;
 }
@@ -2291,6 +2295,10 @@ input:checked + .toggle-bg{
 @media (min-width: 640px){
   .sm\:top-40{
     top: 10rem;
+  }
+
+  .sm\:top-100{
+    top: 40rem;
   }
 
   .sm\:my-6{
