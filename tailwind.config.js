@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js}","./node_modules/flowbite/**/*.js",'node_modules/preline/dist/*.js'],
+  content: ["./*.{html,js}","node_modules/flowbite/**/*.js",'node_modules/preline/dist/*.js'],
   theme: {
     accentColor: ({ theme }) => ({
       ...theme('colors'),
@@ -1060,7 +1060,7 @@ module.exports = {
   
   plugins: [
     require('flowbite/plugin'),
-    require('preline/plugin')
+    require('preline/plugin'),
   ],
 }
 
