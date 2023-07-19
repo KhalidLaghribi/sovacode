@@ -878,6 +878,10 @@ input:checked + .toggle-bg{
   visibility: hidden;
 }
 
+*,html {
+  scroll-behavior: smooth !important;
+}
+
 *, ::before, ::after{
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -1104,20 +1108,16 @@ input:checked + .toggle-bg{
   top: 25%;
 }
 
-.top-100{
-  top: 40rem;
-}
-
 .top-20{
   top: 5rem;
 }
 
-.top-8{
-  top: 2rem;
-}
-
 .top-40{
   top: 10rem;
+}
+
+.top-8{
+  top: 2rem;
 }
 
 .z-0{
@@ -1356,10 +1356,6 @@ input:checked + .toggle-bg{
 
 .w-full_95{
   width: 95%;
-}
-
-.w-full_99{
-  width: 99%;
 }
 
 .max-w-\[85rem\]{
@@ -2251,10 +2247,6 @@ input:checked + .toggle-bg{
 }
 
 @media not all and (min-width: 640px){
-  .max-sm\:left-8{
-    left: 2rem;
-  }
-
   .max-sm\:top-49{
     top: 13.25rem;
   }
@@ -2293,12 +2285,12 @@ input:checked + .toggle-bg{
 }
 
 @media (min-width: 640px){
-  .sm\:top-40{
-    top: 10rem;
-  }
-
   .sm\:top-100{
     top: 40rem;
+  }
+
+  .sm\:top-40{
+    top: 10rem;
   }
 
   .sm\:my-6{
@@ -2647,4 +2639,3 @@ input:checked + .toggle-bg{
     line-height: 1;
   }
 }
-
