@@ -1042,6 +1042,8 @@ module.exports = {
          'orange1':'#FBA81C',
          'orange2': '#E05688',
          'gris':'rgba(30, 30, 32, 0.50)',
+         primary: {"50":"#eff6ff","100":"#dbeafe","200":"#bfdbfe","300":"#93c5fd","400":"#60a5fa","500":"#3b82f6","600":"#2563eb","700":"#1d4ed8","800":"#1e40af","900":"#1e3a8a","950":"#172554"}
+
       },
       fontFamily:{
         'nunito':['Nunito'],
@@ -1051,13 +1053,15 @@ module.exports = {
       borderRadius:{
         '5xl':'5px',
         '1':'1px',
-      }
+      },
+     
     },
   },
   backgroundImage:{
     'handsome':"url('./images/handosme.svg')",
   },
   
+
   plugins: [
     require('flowbite/plugin'),
     require('preline/plugin'),
