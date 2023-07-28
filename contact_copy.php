@@ -7,18 +7,17 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="dist/output.css">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+    <script src="http://localhost/filetail/src/contact.js"></script>
 
 </head>
 <body>
     
 <?php
-session_start();
-
 $email = '';
 $topic = '';
 $message = '';
+$id = 0;
+$send = 0;
 
 function send_mess()
 {
@@ -35,9 +34,7 @@ function send_mess()
         die("Connection failed: " . $conn->connect_error);
     }
 
-    global $email, $topic, $message;
-
-    $_SESSION["send"] = false;
+    global $email, $topic, $message, $send;
 
     if (isset($_POST['add'])) {
         // Validate and sanitize the input data
@@ -47,18 +44,18 @@ function send_mess()
 
         // Perform form validation
         if (empty($email) || empty($topic) || empty($message)) {
-            $_SESSION["error"] = "Please fill in all the required fields.";
+            echo "Please fill in all the required fields.";
             $conn->close();
             return;
         }
 
-        // Prepare the SQL query to prevent SQL injection
+        // Insert data into the database using prepared statements
         $sql = "INSERT INTO info_clients (email, topic, messages) VALUES (?, ?, ?)";
         $stmt = $conn->prepare($sql);
 
         // Check if the prepared statement was successful
         if (!$stmt) {
-            $_SESSION["error"] = "Error: " . $conn->error;
+            echo "Error: " . $conn->error;
             $conn->close();
             return;
         }
@@ -68,12 +65,18 @@ function send_mess()
 
         if ($stmt->execute()) {
             // Message sent successfully
-            $_SESSION['send'] = true;
+            $send+=1;
+            $stmt->close();
+            $conn->close();
+            header("Location: contact.php");
+            exit();
         } else {
-            $_SESSION["error"] = "Error: Message couldn't be sent.";
+            echo "Error: " . $stmt->error;
+            $stmt->close();
+            $conn->close();
+            return;
         }
-
-        $stmt->close();
+      
     }
 
     $conn->close();
@@ -83,83 +86,20 @@ function test_input($data)
 {
     $data = trim($data);
     $data = stripslashes($data);
-    $data = htmlspecialchars($data, ENT_QUOTES, 'UTF-8'); // Sanitize to prevent XSS attacks
+    $data = htmlspecialchars($data);
     return $data;
 }
 
 // Call the send_mess() function when the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     send_mess();
-    header("Location: contact.php"); // Redirect regardless of success/failure to avoid resubmission on refresh
-    exit();
 }
-
-// Output errors and unset session variables for a clean slate
-if (isset($_SESSION["error"])) {
-    echo $_SESSION["error"];
-    unset($_SESSION["error"]);
-}
-?>
-<?php if (isset($_SESSION["send"])) {
-  echo '<script type="text/javascript">
-  toastr.options = {
-    "closeButton": true,
-    "debug": false,
-    "newestOnTop": false,
-    "progressBar": true,
-    "positionClass": "toast-bottom-right",
-    "preventDuplicates": false,
-    "onclick": null,
-    "showDuration": "300",
-    "hideDuration": "1000",
-    "timeOut": "5000",
-    "extendedTimeOut": "1000",
-    "showEasing": "swing",
-    "hideEasing": "linear",
-    "showMethod": "fadeIn",
-    "hideMethod": "fadeOut"
-  }
-  toastr["success"]("message send successfully")
-  </script>';
-
-    unset($_SESSION["send"]);
+if($send){
+  echo "<script>alert('tawcha')</script>";
+  $send-=1;
 }
 ?>
 
-
-
-    
-<header id="header" class="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-transparent  text-sm py-3 sm:py-0">
-    <nav class="relative max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8" aria-label="Global">
-      <div class="flex items-center justify-between">
-        <a class="flex-none text-xl font-semibold text-white" href="#" aria-label="Brand"><img onclick="location.href='./index.html'" src="images/logo/Group 162475.png" alt=""></a>
-        <div class="sm:hidden">
-          <button type="button" class="hs-collapse-toggle p-2 inline-flex justify-center items-center gap-2 rounded-md border border-white/[.5] font-medium text-white/[.5] shadow-sm align-middle hover:bg-white/[.1] hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm" data-hs-collapse="#navbar-collapse-with-animation" aria-controls="navbar-collapse-with-animation" aria-label="Toggle navigation">
-            <svg class="hs-collapse-open:hidden w-4 h-4" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-            <svg class="hs-collapse-open:block hidden w-4 h-4" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-      <div id="navbar-collapse-with-animation" class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block">
-        <div class="flex flex-col gap-y-4 gap-x-0 mt-5 sm:flex-row sm:items-center sm:justify-end sm:gap-y-0 sm:gap-x-7 sm:mt-0 sm:pl-7">
-          <a class="font-medium text-white sm:py-6" href="./index.html" aria-current="page">Home</a>
-          <a class="font-medium text-white/[.8] hover:text-white sm:py-6" href="#Services">Services</a>
-          <a class="font-medium text-white/[.8] hover:text-white sm:py-6" href="#projet">Our projet</a>
-          <a class="font-medium text-white/[.8] hover:text-white sm:py-6" href="#about">About us</a>
-  
-         
-  
-          <a class="flex items-center gap-x-2 font-medium text-white/[.8] hover:text-white sm:border-l sm:border-white/[.3] sm:my-6 sm:pl-6" href="#">
-            <button type="button" class="text-white  bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xl px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 lg:w-40 lg:h-12">Contact us </button>
-          </a>
-        </div>
-      </div>
-    </nav>
-  </header>
 
 
 
@@ -184,6 +124,13 @@ if (isset($_SESSION["error"])) {
       </form>
   </div>
 </section>
+
+<div id="toast_msg"  class="toast hidden  items-center w-full max-w-xs p-4 space-x-4 text-gray-500 bg-white divide-x divide-gray-200 rounded-lg shadow dark:text-gray-400 dark:divide-gray-700 space-x dark:bg-gray-800" role="alert">
+  <svg class="w-5 h-5 text-blue-600 dark:text-blue-500 rotate-45" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 17 8 2L9 1 1 19l8-2Zm0 0V9"/>
+  </svg>
+  <div class="pl-4 text-sm font-normal">Message sent successfully.</div>
+</div>
 
 
 <script src="http://localhost/filetail/node_modules/preline/dist/preline.js" type="text/javascript"></script>
