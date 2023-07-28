@@ -1,7 +1,7 @@
 
     document.addEventListener('DOMContentLoaded', function() {
         var button = document.getElementById('click_bar');
-        var element = document.getElementById('list_all')
+        var element = document.getElementById('list_all');
         var element_list=document.getElementById('list_contact');
     
         button.addEventListener('click', function() {
@@ -48,4 +48,6 @@
         video.currentTime = 0;
     }
     
-  
+    
+
+   
