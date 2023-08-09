@@ -86,7 +86,7 @@ else{
                 <?php echo $user['messages']; ?>
                 </td>
                 <td class="px-6 py-4 text-right">
-                    <a href="mailto:<?php echo $user['email']; ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">respond</a>
+                    <a href="send_msg.php?id=<?php echo $user['id']; ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">respond</a>
                 </td>
                 <td class="px-6 py-4 text-right">
                     <a href="delete.php?id=<?php echo $user['id'] ?>"  class="delete-btn font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
@@ -97,5 +97,8 @@ else{
     </table>
 </div>
 
+
+<script src="node_modules/preline/dist/preline.js" type="text/javascript"></script>
+<script src="node_modules/flowbite/dist/flowbite.min.js" type="text/javascript"></script>
 </body>
 </html>
