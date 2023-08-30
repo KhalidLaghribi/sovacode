@@ -4,12 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="dist/output.css">
-
+    <link rel="stylesheet" href="../dist/output.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+    <link rel="icon" href="../images/logo/Group 162475.svg" type="image/icon type">
 </head>
 <body>
 
 <?php
+session_start();
+
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -45,16 +51,36 @@ else{
     $result_reset_auto_increment = $conn->query($sql_reset_auto_increment);
 }
 
+
+ if (isset($_SESSION["check"])) {
+    echo '<script type="text/javascript">
+    toastr.options = {
+      "closeButton": true,
+      "debug": false,
+      "newestOnTop": false,
+      "progressBar": true,
+      "positionClass": "toast-bottom-right",
+      "preventDuplicates": false,
+      "onclick": null,
+      "showDuration": "300",
+      "hideDuration": "1000",
+      "timeOut": "5000",
+      "extendedTimeOut": "1000",
+      "showEasing": "swing",
+      "hideEasing": "linear",
+      "showMethod": "fadeIn",
+      "hideMethod": "fadeOut"
+    }
+    toastr["success"]("message send successfully")
+    </script>';
+  
+    unset($_SESSION["check"]);
+  }
+  
 ?>
-
-
-
-
-
-
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-800 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3">
                    email
@@ -74,7 +100,7 @@ else{
             </tr>
         </thead>
         <tbody>
-        <?php foreach ($userData as $key => $user): ?>
+        <?php foreach ($userData as  $user): ?>
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 <?php echo $user['email']; ?>  
@@ -98,7 +124,7 @@ else{
 </div>
 
 
-<script src="node_modules/preline/dist/preline.js" type="text/javascript"></script>
-<script src="node_modules/flowbite/dist/flowbite.min.js" type="text/javascript"></script>
+<script src="../node_modules/preline/dist/preline.js" type="text/javascript"></script>
+<script src="../node_modules/flowbite/dist/flowbite.min.js" type="text/javascript"></script>
 </body>
 </html>

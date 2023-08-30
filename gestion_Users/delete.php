@@ -28,6 +28,6 @@ if (isset($_GET['id'])) {
         echo "error";
     }
 } else {
-    echo "erroe_parametre";
+    echo "error_parametre";
 }
 ?>

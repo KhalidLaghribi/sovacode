@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="dist/output.css">
+    <link rel="stylesheet" href="../dist/output.css">
 
 </head>
 <body>
@@ -45,7 +45,7 @@ if (isset($_GET['id'])) {
 <form action="to_gmail.php" method="post">
   <div class="mb-6">
     <label for="email" class="block mb-2 text-sm font-medium text-white">to:</label>
-    <input name="email" value="<?php echo $user['email']; ?>" type="text" id="disabled-input" aria-label="disabled input" class="mb-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    <input name="email" value="<?php echo $user['email']; ?>" type="text" id="disabled-input" aria-label="disabled input" class="mb-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 cursor-not-allowed" >
   </div>
   
 <div class="mb-6">
@@ -58,7 +58,7 @@ if (isset($_GET['id'])) {
 </form>
 
 
-<script src="node_modules/preline/dist/preline.js" type="text/javascript"></script>
-<script src="node_modules/flowbite/dist/flowbite.min.js" type="text/javascript"></script>
+<script src="../node_modules/preline/dist/preline.js" type="text/javascript"></script>
+<script src="../node_modules/flowbite/dist/flowbite.min.js" type="text/javascript"></script>
 </body>
 </html>

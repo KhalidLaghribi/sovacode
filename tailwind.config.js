@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./*.{html,js,php}","node_modules/flowbite/**/*.js",'node_modules/preline/dist/*.js'],
+  content: ["./*.{html,js,php}","node_modules/flowbite/**/*.js",'node_modules/preline/dist/*.js','gestion_Users/*.php'],
   theme: {
     accentColor: ({ theme }) => ({
       ...theme('colors'),
@@ -804,6 +804,7 @@ module.exports = {
       sm: '640px',
       md: '768px',
       lg: '1024px',
+      lg1: '1155px',
       xl: '1280px',
       phone: '375px',
     },

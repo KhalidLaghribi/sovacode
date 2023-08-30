@@ -1,8 +1,7 @@
 <?php
 session_start();
 
-
-require 'vendor/vendor/autoload.php';
+require '../vendor/vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -39,16 +38,16 @@ if (isset($_POST['send'])) {
     }
 
     // Set the email subject and body
-    $mail->Subject = 'about your subject';
-    $mail->Body = '"Thank you for reaching out to us. A dedicated member of our team will review your request and will be in touch with you promptly. We appreciate your patience and look forward to assisting you.';
+    $mail->Subject = 'about your your subject';
+    $mail->Body = $_POST["message"];
 
     // Send the email
     if (!$mail->send()) {
         echo 'Mailer Error: ' . $mail->ErrorInfo;
     } else {
-        $_SESSION['spam']=true;
+        $_SESSION["check"]=true;
         echo 'Message sent successfully!';
-        header("Location: contact.php");
+        header("Location: respond_page.php");
         
         exit();
     }
