@@ -19,6 +19,7 @@ session_start();
 $email = '';
 $topic = '';
 $message = '';
+$Nom = '';
 
 function send_mess()
 {
@@ -35,25 +36,26 @@ function send_mess()
         die("Connection failed: " . $conn->connect_error);
     }
 
-    global $email, $topic, $message;
+    global $email, $topic, $message, $Nom;
 
     $_SESSION["send"] = false;
 
     if (isset($_POST['add'])) {
         // Validate and sanitize the input data
+        $Nom = test_input($_POST['Nom']);
         $email = test_input($_POST['email']);
         $topic = test_input($_POST['topic']);
         $message = test_input($_POST['message']);
 
         // Perform form validation
-        if (empty($email) || empty($topic) || empty($message)) {
+        if (empty($email) || empty($topic) || empty($message) || empty($Nom)) {
             $_SESSION["error"] = "Please fill in all the required fields.";
             $conn->close();
             return;
         }
 
         // Prepare the SQL query to prevent SQL injection
-        $sql = "INSERT INTO info_clients (email, topic, messages) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO info_clients (email, topic, messages,Name) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
 
         // Check if the prepared statement was successful
@@ -64,7 +66,7 @@ function send_mess()
         }
 
         // Bind parameters to the prepared statement
-        $stmt->bind_param("sss", $email, $topic, $message);
+        $stmt->bind_param("ssss", $email, $topic, $message,$Nom);
 
         if ($stmt->execute()) {
             // Message sent successfully
@@ -131,22 +133,30 @@ if (isset($_POST['add'])) {
     if (isset($_POST['email'])) {
         $recipientEmail = $_POST['email'];
         $mail->addAddress($recipientEmail); // Recipient's email and name
+        $mail->addAddress("khalidlaghribi99@gmail.com");
     } else {
         echo 'Recipient email address not provided.';
         exit();
     }
 
     // Set the email subject and body
-    $mail->Subject = 'about your subject';
-    $mail->Body = '"Thank you for reaching out to us. A dedicated member of our team will review your request and will be in touch with you promptly. We appreciate your patience and look forward to assisting you.';
+    $mail->Subject = 'message send succesfully';
+    $mail->Body = "Hi ". $_POST['Nom']." Thank you for reaching out to us. A dedicated member of our team will review your request and will be in touch with you promptly. We appreciate your patience and look forward to assisting you.";
 
     // Send the email
     if (!$mail->send()) {
         echo 'Mailer Error: ' . $mail->ErrorInfo;
     } else {
-        $_SESSION['spam']=true;
-        echo 'Message sent successfully!';
-        header("Location: contact.php");
+      $mail->clearAddresses();
+      $mail->Body = '';
+      $mail->addAddress("khalidlaghribi99@gmail.com");
+      $mail->Subject = 'new message has been receved';
+      $mail->Body = 'check the letter box for a nex message';
+      $mail->send();
+
+      $_SESSION['spam']=true;
+      echo 'Message sent successfully!';
+      header("Location: contact.php");
         
         exit();
     }
@@ -224,10 +234,15 @@ if (isset($_POST['add'])) {
       <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-white">Contact Us</h2>
       <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Got a technical issue? Want to send feedback about a beta feature? Need details about our Business plan? Let us know.</p>
       <form  method="post" class="space-y-8">
+      <div>
+              <label for="Name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your name</label>
+              <input type="name" id="name" name="Nom" value="<?php echo $Nom;?>" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="Your name" required>
+          </div>         
           <div>
               <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email</label>
-              <input type="email" id="email" name="email" value="<?php echo $email;?>" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="name@flowbite.com" required>
+              <input type="email" id="email" name="email" value="<?php echo $email;?>" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="name@enver.com" required>
           </div>
+                       
           <div>
               <label for="subject" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Subject</label>
               <input type="text" id="subject" name="topic" value="<?php echo $topic;?>" class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="Let us know how we can help you" required>

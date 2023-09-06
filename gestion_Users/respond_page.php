@@ -29,7 +29,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT email, topic, messages , id FROM info_clients ORDER BY id DESC";
+$sql = "SELECT Name ,email, topic, messages , id FROM info_clients ORDER BY id DESC";
 $result = $conn->query($sql);
 
 // Create an array to hold the results
@@ -42,7 +42,8 @@ if ($result->num_rows > 0) {
             'email' => $row['email'],
             'topic' => $row['topic'],
             'messages' => $row['messages'],
-            'id'=> $row['id']
+            'id'=> $row['id'],
+            'Name' => $row['Name']
         );
     }
 }
@@ -86,6 +87,9 @@ else{
                    email
                 </th>
                 <th scope="col" class="px-6 py-3">
+                   name
+                </th>
+                <th scope="col" class="px-6 py-3">
                     topic
                 </th>
                 <th scope="col" class="px-6 py-3">
@@ -104,6 +108,9 @@ else{
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 <?php echo $user['email']; ?>  
+                </th>
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <?php echo $user['Name']; ?>  
                 </th>
                 <td class="px-6 py-4">
                 <?php echo $user['topic']; ?>
